@@ -24,8 +24,7 @@ Expected output:
 
 Dependence
 ----------
-* [warp_ctc_pytorch](https://github.com/SeanNaren/warp-ctc/tree/pytorch_bindings/pytorch_binding)
-* lmdb
+* lmdb: pip install lmdb
 
 Train a new model
 -----------------

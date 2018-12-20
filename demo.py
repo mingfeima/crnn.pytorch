@@ -3,9 +3,11 @@ from torch.autograd import Variable
 import utils
 import dataset
 from PIL import Image
+from time import time
 
 import models.crnn as crnn
 
+iters = 10
 
 model_path = './data/crnn.pth'
 img_path = './data/demo.png'
@@ -28,7 +30,10 @@ image = image.view(1, *image.size())
 image = Variable(image)
 
 model.eval()
-preds = model(image)
+for i in range(iters):
+    tstart = time()
+    preds = model(image)
+    print("### iter %d time: %.2f ms" % (i, (time() - tstart) * 1000))
 
 _, preds = preds.max(2)
 preds = preds.transpose(1, 0).contiguous().view(-1)
